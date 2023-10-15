@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="titleA">Bodhidharma</string>
+    <string name="artistA">Tsukioka Yoshitoshi</string>
+    <string name="yearA">1887</string>
+    <string name="titleB">Lao Tzŭ</string>
+    <string name="artistB">Ikarashi Shunmei</string>
+    <string name="yearB">1750</string>
+</resources>
