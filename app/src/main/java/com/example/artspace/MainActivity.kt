@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -68,7 +69,7 @@ val imageFour = imageInfo(R.drawable.the_grand_master,
     "2023")
 
 val images = listOf(imageOne, imageTwo, imageThree, imageFour)
-val numberOfSamples: Int = images.size
+val numberOfSamples: Int = images.size - 1
 
 @Composable
 fun contentDisplay(drawableResourceId: Int,
@@ -87,7 +88,7 @@ fun contentDisplay(drawableResourceId: Int,
                         .width(350.dp)
                         .height(500.dp))
             }
-            Spacer(modifier = modifier.height(20.dp))
+            Spacer(modifier = modifier.height(5.dp))
             Row(modifier = modifier) {
                 Text(
                     text = title,
@@ -106,7 +107,7 @@ fun contentDisplay(drawableResourceId: Int,
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
-            Spacer(modifier = modifier.height(20.dp))
+            Spacer(modifier = modifier.height(10.dp))
         }
 }
 
@@ -115,7 +116,7 @@ fun pageView() {
 
     var currentStep by remember { mutableStateOf(0) }
 
-    val image = images.get(currentStep)
+    val image = images[currentStep]
     val title = image.title
     val year = image.year
     val drawableResourceId = image.imageResource
@@ -125,19 +126,19 @@ fun pageView() {
         contentDisplay(drawableResourceId = drawableResourceId,
             title = title, artist = artist, year = year)
         Row(modifier = Modifier) {
-            Button(onClick = { if(currentStep != 0) currentStep-- }) {
+            FilledTonalButton(onClick = { if(currentStep != 0) currentStep-- }) {
                 Text(
                     text = "Previous",
                     fontWeight = FontWeight.Bold)
             }
-            Spacer(modifier = Modifier.width(30.dp))
-            Button(onClick = { if(currentStep < numberOfSamples) currentStep ++ }) {
+            Spacer(modifier = Modifier.width(40.dp))
+            FilledTonalButton(onClick = { if(currentStep < numberOfSamples) currentStep ++ else currentStep = 0 }) {
                 Text(
                     text = "Next",
                     fontWeight = FontWeight.Bold)
             }
         }
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(30.dp))
     }
 }
 
